@@ -1,0 +1,322 @@
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhousPAB-777CbOTJfKmwHZ3Q9pRiTOoMTqPr5bmvpshsjvaHxFkI6bwCgc7ouDgyL-cg6VsDIVtEHpVNR-DuV8sgAzUCIeIsB9LYlUrvW_ApoGdUnMFCFA2CsxDMDUBw7CnJTSd9r5OaJi9Bt51fqvnSwJoPB2QTJPP8HJKTIEJdcAl61kV_Aj2fu694Q/s1600/ChatGPT%20Image%20May%2029,%202026,%2005_28_53%20PM.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" data-original-height="1254" data-original-width="1254" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhousPAB-777CbOTJfKmwHZ3Q9pRiTOoMTqPr5bmvpshsjvaHxFkI6bwCgc7ouDgyL-cg6VsDIVtEHpVNR-DuV8sgAzUCIeIsB9LYlUrvW_ApoGdUnMFCFA2CsxDMDUBw7CnJTSd9r5OaJi9Bt51fqvnSwJoPB2QTJPP8HJKTIEJdcAl61kV_Aj2fu694Q/s1600/ChatGPT%20Image%20May%2029,%202026,%2005_28_53%20PM.png"/></a></div><div class="avurudu-maker-wrapper">
+    <h2 class="avurudu-title">Sinhala & Tamil New Year Card Generator</h2>
+    <p class="avurudu-subtitle">Upload your family photo, select a festive traditional frame, and download your custom Aluth Avurudu greeting card!</p>
+
+    <!-- Step 1: User Text Input -->
+    <div class="avurudu-input-group">
+        <label for="userGreeting" class="avurudu-label">Your Custom Greeting / Name:</label>
+        <input type="text" id="userGreeting" placeholder="Type a message..." value="Subha Aluth Avuruddak Wewa! Wishing you a prosperous New Year!">
+    </div>
+
+    <!-- Step 2: Photo Upload -->
+    <div class="avurudu-input-group">
+        <label for="imageUpload" class="avurudu-label">Upload Your Photo:</label>
+        <input type="file" id="imageUpload" accept="image/*">
+    </div>
+
+    <!-- Step 3: Template Selector -->
+    <label class="avurudu-label">Choose Card Festive Style Frame:</label>
+    <div class="avurudu-template-grid" id="avuruduTemplateGrid">
+        <div class="avurudu-item active" onclick="changeFrame(0)">Suryan Gold</div>
+        <div class="avurudu-item" onclick="changeFrame(1)">Erabadu Red</div>
+        <div class="avurudu-item" onclick="changeFrame(2)">Royal Teal</div>
+        <div class="avurudu-item" onclick="changeFrame(3)">Traditional Terracotta</div>
+    </div>
+
+    <!-- Step 4: Live Interactive Canvas Preview -->
+    <div id="preview-container">
+        <canvas id="avuruduCanvas" width="600" height="600"></canvas>
+    </div>
+
+    <!-- Step 5: Save Trigger Button -->
+    <button class="avurudu-btn-download" id="downloadAvuruduBtn">Download Greeting Card</button>
+</div>
+
+<style>
+    /* Scoped layout rules to blend beautifully with Blogger light themes */
+    .avurudu-maker-wrapper {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 15px;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: transparent;
+    }
+    .avurudu-title {
+        color: #d9381e !important; /* Festive Erabadu Crimson Red Accent */
+        text-align: center;
+        font-size: 24px !important;
+        margin-bottom: 5px !important;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .avurudu-subtitle {
+        font-size: 14px;
+        color: #555;
+        text-align: center;
+        margin-bottom: 25px;
+        line-height: 1.5;
+    }
+    .avurudu-input-group {
+        margin-bottom: 20px;
+    }
+    .avurudu-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #b3240b;
+        text-align: left;
+        font-size: 14px;
+    }
+    #userGreeting, #imageUpload {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 2px solid #f5a698;
+        background: #fff;
+        color: #333;
+        box-sizing: border-box;
+        font-size: 15px;
+    }
+    #userGreeting:focus {
+        border-color: #d9381e;
+        outline: none;
+    }
+    .avurudu-template-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-bottom: 25px;
+    }
+    .avurudu-item {
+        cursor: pointer;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 12px 5px;
+        background: #fffdfd;
+        text-align: center;
+        font-size: 12px;
+        color: #444;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+    .avurudu-item:hover {
+        background: #fff5f3;
+        border-color: #f5a698;
+    }
+    .avurudu-item.active {
+        border-color: #d9381e;
+        background: #d9381e;
+        color: #fff;
+        font-weight: bold;
+    }
+    #preview-container {
+        margin: 25px 0;
+        display: flex;
+        justify-content: center;
+    }
+    #avuruduCanvas {
+        max-width: 100%;
+        height: auto !important;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        border: 2px solid #f5a698;
+        background: #fff;
+    }
+    .avurudu-btn-download {
+        display: block;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #d9381e 0%, #a61c05 100%);
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        padding: 14px 20px;
+        font-size: 16px;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(217, 56, 30, 0.3);
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: transform 0.2s;
+    }
+    .avurudu-btn-download:hover {
+        transform: scale(1.03);
+    }
+    @media (max-width: 480px) {
+        .avurudu-template-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+</style>
+
+<script>
+    const canvas = document.getElementById('avuruduCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    let uploadedImage = null;
+    let selectedFrameIdx = 0;
+
+    // Cultural Festive Theme Presets
+    const frames = [
+        { name: "Suryan Gold", bg: "#FFFDF0", border: "#D4AF37", accent: "#FF8C00" },
+        { name: "Erabadu Red", bg: "#FFF5F3", border: "#B31B04", accent: "#D4AF37" },
+        { name: "Royal Teal", bg: "#F4F9F9", border: "#005F73", accent: "#EE9B00" },
+        { name: "Traditional Terracotta", bg: "#FAF5F0", border: "#8B4513", accent: "#D4AF37" }
+    ];
+
+    // Safe File Upload Input Reader Pipeline
+    document.getElementById('imageUpload').addEventListener('change', function(e) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const img = new Image();
+            img.onload = function() {
+                uploadedImage = img;
+                drawCard();
+            };
+            img.src = event.target.result;
+        };
+        if(e.target.files[0]) {
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    });
+
+    function changeFrame(index) {
+        document.querySelector('.avurudu-item.active').classList.remove('active');
+        document.getElementsByClassName('avurudu-item')[index].classList.add('active');
+        selectedFrameIdx = index;
+        drawCard();
+    }
+
+    // Traditional Sun/Star Motif Vector Generator
+    function drawSunMotif(ctx, x, y, radius) {
+        ctx.save();
+        ctx.strokeStyle = frames[selectedFrameIdx].border;
+        ctx.fillStyle = frames[selectedFrameIdx].accent;
+        ctx.lineWidth = 2;
+        
+        // Draw Central Sun Disk
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Draw Radiating Geometric Rays
+        for (let i = 0; i < 12; i++) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate((i * Math.PI) / 6);
+            ctx.beginPath();
+            ctx.moveTo(0, -radius - 2);
+            ctx.lineTo(-5, -radius - 12);
+            ctx.lineTo(0, -radius - 22);
+            ctx.lineTo(5, -radius - 12);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.restore();
+        }
+        ctx.restore();
+    }
+
+    // Core Canvas Processing Engine
+    function drawCard() {
+        const frame = frames[selectedFrameIdx];
+        const greetingText = document.getElementById('userGreeting').value || "";
+
+        // 1. Draw Festive Base Background
+        ctx.fillStyle = frame.bg;
+        ctx.fillRect(0, 0, 600, 600);
+
+        // 2. Render Sun Backdrop Vector Accents (Traditional Avurudu Symbolism)
+        drawSunMotif(ctx, 300, 250, 40);
+
+        // 3. Compute and Composite Smart Square Cropped Photo Over Motif
+        if (uploadedImage) {
+            ctx.save();
+            
+            const imgX = 130;
+            const imgY = 85;
+            const imgSize = 340;
+
+            // Circular frame cut option for cultural aesthetics
+            ctx.beginPath();
+            ctx.arc(300, 255, 170, 0, Math.PI * 2);
+            ctx.clip();
+
+            // Mathematical Aspect-Ratio Safe Scaling Vector
+            const minSide = Math.min(uploadedImage.width, uploadedImage.height);
+            const sx = (uploadedImage.width - minSide) / 2;
+            const sy = (uploadedImage.height - minSide) / 2;
+
+            ctx.drawImage(uploadedImage, sx, sy, minSide, minSide, imgX, imgY, imgSize, imgSize);
+            ctx.restore();
+
+            // Circular Outer Ring Frame Line Overlay
+            ctx.strokeStyle = frame.border;
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.arc(300, 255, 171, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+
+        // 4. Draw Traditional Intricate Decorative Borders
+        ctx.strokeStyle = frame.border;
+        ctx.lineWidth = 6;
+        ctx.strokeRect(25, 25, 550, 550);
+        
+        ctx.strokeStyle = frame.accent;
+        ctx.lineWidth = 2;
+        ctx.strokeRect(34, 34, 532, 532);
+
+        // Intricate interlocking corner points
+        ctx.fillStyle = frame.border;
+        const pts = [25, 555];
+        pts.forEach(x => {
+            pts.forEach(y => {
+                ctx.beginPath();
+                ctx.arc(x == 25 ? x+10 : x-10, y == 25 ? y+10 : y-10, 14, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        });
+
+        // 5. Native Typography & Wrapping Compiler
+        ctx.textAlign = 'center';
+        ctx.fillStyle = frame.border;
+        ctx.font = 'bold 22px "Segoe UI", Arial, sans-serif';
+
+        const words = greetingText.split(' ');
+        let line = '';
+        let startY = 495;
+        const lineHeight = 32;
+
+        for (let n = 0; n < words.length; n++) {
+            let testLine = line + words[n] + ' ';
+            let metrics = ctx.measureText(testLine);
+            if (metrics.width > 480 && n > 0) {
+                ctx.fillText(line, 300, startY);
+                line = words[n] + ' ';
+                startY += lineHeight;
+            } else {
+                line = testLine;
+            }
+        }
+        ctx.fillText(line, 300, startY);
+    }
+
+    // Live update dynamic state triggers
+    document.getElementById('userGreeting').addEventListener('input', drawCard);
+
+    // File Extraction Save Download Triggers
+    document.getElementById('downloadAvuruduBtn').addEventListener('click', function() {
+        const link = document.createElement('a');
+        link.download = `Sinhala_Tamil_NewYear_Card.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
+
+    // Handle instant app initialization mounting loops safely
+    window.onload = () => { drawCard(); };
+    setTimeout(drawCard, 300);
+</script>
